@@ -1,10 +1,10 @@
-const key = require("./../models/keysave");
+const keys = require("./../models/keysave");
 const logger = require("./../config/logger")
 module.exports = {
 
     saveKey: async function (key) {
         return new Promise(async function(resolve, reject) {
-            const newKey = new key ({
+            const newKey = new keys ({
                 key: key
             })
 
