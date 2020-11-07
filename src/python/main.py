@@ -1,30 +1,21 @@
-from cryptography.fernet import Fernet
+# This is our main file
 
-def write_key():
-    """
-    Generates a key and save it into a file
-    """
-    key = Fernet.generate_key()
-    with open("key.key", "wb") as key_file:
-        key_file.write(key)
+# Requirements
+import requests
 
-def load_key():
-    """
-    Loads the key from the current directory named `key.key`
-    """
-    return open("key.key", "rb").read()
 
-def encrypt(filename, key):
+def send_key(keystring):
     """
-    Given a filename (str) and key (bytes), it encrypts the file and write it
+    This module sends a generated key to the server.
     """
-    f = Fernet(key)
-    with open(filename, "rb") as file:
-        # read all file data
-        file_data = file.read()
-    # encrypt data
-    encrypted_data = f.encrypt(file_data)
-    # write the encrypted file
-    with open(filename, "wb") as file:
-        file.write(encrypted_data)
+    r = requests.post(
+            url = "http://localhost:3000/savekey", 
+            data = {
+                "key":keystring
+                }
+            )
+    print(r)
 
+
+if __name__ == "__main__":
+    send_key("test")
