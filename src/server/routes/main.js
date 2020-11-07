@@ -1,4 +1,5 @@
 const keysaver = require("./../controllers/key_func");
+const logger = require("./../config/logger");
 module.exports = function(app) {
     app.get('/', function(req, res) {
         res.status(200).json({

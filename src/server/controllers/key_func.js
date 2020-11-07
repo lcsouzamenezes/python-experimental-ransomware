@@ -1,4 +1,5 @@
 const key = require("./../models/keysave");
+const logger = require("./../config/logger")
 module.exports = {
 
     saveKey: async function (key) {
