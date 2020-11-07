@@ -2,8 +2,12 @@
 
 # Requirements
 import requests
-import pycrypto
 import os
+import base64
+import hashlib
+from Crypto.Cipher import AES
+from Crypto import Random
+
 
 """
 NETWORKING SECTION.
